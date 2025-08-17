@@ -1,0 +1,5 @@
+Flask==<tu_version_de_flask>
+requests==2.31.0 # O la versión más reciente
+python-dotenv==<tu_version_de_python-dotenv>
+Flask-Mail==0.9.1
+celery==5.3.0

@@ -1,0 +1,44 @@
+/* Estilos personalizados para tu aplicación de biblioteca */
+
+body {
+    padding-top: 20px; /* Añade un poco de espacio en la parte superior del cuerpo de la página */
+    background-color: #f8f9fa; /* Establece un color de fondo gris claro para toda la página */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Define una fuente de texto preferida */
+}
+
+.container {
+    max-width: 960px; /* Limita el ancho máximo del contenedor principal para un mejor diseño en pantallas grandes */
+    margin-bottom: 50px; /* Añade un margen inferior al contenedor para evitar que el contenido toque el borde de la página */
+}
+
+/* Puedes añadir más estilos aquí si deseas personalizar elementos específicos. */
+/* Por ejemplo: */
+
+/* Estilos para los títulos h1 */
+h1 {
+    color: #0056b3; /* Un azul más oscuro para los títulos principales */
+    margin-bottom: 1.5rem; /* Espacio debajo de los títulos */
+}
+
+/* Estilos para los botones */
+.btn {
+    border-radius: 0.3rem; /* Bordes ligeramente redondeados para los botones */
+    transition: background-color 0.2s ease-in-out; /* Transición suave al pasar el ratón por encima */
+}
+
+/* Estilos para las tablas */
+.table {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil para las tablas */
+    border-radius: 0.5rem; /* Bordes redondeados para la tabla */
+    overflow: hidden; /* Asegura que la sombra y los bordes se apliquen correctamente */
+}
+
+.table thead {
+    background-color: #e9ecef; /* Un fondo ligeramente gris para el encabezado de la tabla */
+}
+
+/* Estilos para las alertas */
+.alert {
+    border-radius: 0.5rem; /* Bordes redondeados para las alertas */
+    font-weight: 500; /* Texto ligeramente más negrita */
+}

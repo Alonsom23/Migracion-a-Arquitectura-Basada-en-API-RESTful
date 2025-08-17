@@ -1,0 +1,63 @@
+{% extends "base.html" %} {# Indica que esta plantilla extiende de base.html #}
+
+{% block title %}Lista de Libros{% endblock %} {# Define el título específico de esta página #}
+
+{% block content %} {# Define el contenido único de esta página dentro del bloque 'content' de base.html #}
+<h1 class="mb-4">Lista de Libros</h1>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <form action="{{ url_for('index') }}" method="GET" class="d-flex">
+            <input class="form-control me-2" type="search" name="search" placeholder="Buscar por título, autor o género" aria-label="Search" value="{{ search_query }}">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+    </div>
+    <div class="col-md-6 text-end">
+        <a href="{{ url_for('add_book_route') }}" class="btn btn-primary">Agregar Nuevo Libro</a>
+    </div>
+</div>
+
+{% if books %} {# Condicional: solo muestra la tabla si hay libros #}
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Género</th>
+                <th>Leído</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %} {# Bucle: itera sobre cada libro en la lista 'books' #}
+            <tr>
+                <td>{{ book.titulo }}</td> {# Muestra la variable 'titulo' del objeto book #}
+                <td>{{ book.autor }}</td>
+                <td>{{ book.genero if book.genero else 'N/A' }}</td> {# Condicional inline para el género #}
+                <td>
+                    {% if book.leido %} {# Condicional: cambia el badge según si está leído #}
+                        <span class="badge bg-success">Sí</span>
+                    {% else %}
+                        <span class="badge bg-danger">No</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {# Botón para editar: redirige a la ruta de edición con el ID del libro #}
+                    <a href="{{ url_for('edit_book_route', book_id=book.id) }}" class="btn btn-sm btn-warning me-2">Editar</a>
+                    {# Formulario para eliminar: redirige a la ruta de CONFIRMACIÓN de eliminación #}
+                    <form action="{{ url_for('confirm_delete_route', book_id=book.id) }}" method="GET" class="d-inline">
+                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-info" role="alert">
+    No hay libros registrados en la biblioteca. ¡Agrega uno!
+</div>
+{% endif %}
+{% endblock %}

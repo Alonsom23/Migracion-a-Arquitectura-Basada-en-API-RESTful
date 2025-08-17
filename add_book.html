@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Agregar Libro{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Agregar Nuevo Libro</h1>
+<form action="{{ url_for('add_book_route') }}" method="POST"> {# El formulario envía los datos a la ruta 'add_book_route' #}
+    <div class="mb-3">
+        <label for="titulo" class="form-label">Título:</label>
+        <input type="text" class="form-control" id="titulo" name="titulo" required> {# El atributo 'name' es crucial para Flask #}
+    </div>
+    <div class="mb-3">
+        <label for="autor" class="form-label">Autor:</label>
+        <input type="text" class="form-control" id="autor" name="autor" required>
+    </div>
+    <div class="mb-3">
+        <label for="genero" class="form-label">Género:</label>
+        <input type="text" class="form-control" id="genero" name="genero">
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="leido" name="leido"> {# Los checkboxes envían 'on' si están marcados #}
+        <label class="form-check-label" for="leido">¿Leído?</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Agregar Libro</button>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
